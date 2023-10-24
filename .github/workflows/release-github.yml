@@ -62,7 +62,7 @@ jobs:
       #     npm_config_tag: ${{ env.NPM_DIST_TAG }} # <-- For main, this is `latest.` Otherwise, `next`, `next-major`, etc. See ./.releaserc for release branch config.
       #   run: npx semantic-release
       - name: Dry-run mono-artifact
-        if: (github.ref_name == 'main' && github.event_name != 'workflow_dispatch') || github.event_name == 'pull_request'
+        # if: (github.ref_name == 'main' && github.event_name != 'workflow_dispatch') || github.event_name == 'pull_request'
         env:
           GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE_BOT_PAT }} # <-- Allows semantic-release-bot to push changes to protected branches
           npm_config_tag: ${{ env.NPM_DIST_TAG }} # <-- For main, this is `latest.` Otherwise, `next`, `next-major`, etc. See ./.releaserc for release branch config.
