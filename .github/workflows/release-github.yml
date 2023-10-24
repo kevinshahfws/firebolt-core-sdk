@@ -68,7 +68,7 @@ jobs:
           npm_config_tag: ${{ env.NPM_DIST_TAG }} # <-- For main, this is `latest.` Otherwise, `next`, `next-major`, etc. See ./.releaserc for release branch config.
         run: npx semantic-release --dry-run
       - name: Build artifacts for PRs
-        if: github.event_name == 'pull_request'
+        # if: github.event_name == 'pull_request'
         run: npm run dist
       - name: Check if semantic-release created a build
         id: check_build
