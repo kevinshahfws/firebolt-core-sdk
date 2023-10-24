@@ -70,11 +70,11 @@ jobs:
       - name: Build artifacts for PRs
         if: github.event_name == 'pull_request'
         run: npm run dist
-      # - name: Check if semantic-release created a build
-      #   id: check_build
-      #   uses: andstor/file-existence-action@v2
-      #   with:
-      #     files: "./src/sdks/core/dist/lib/firebolt.mjs"
+      - name: Check if semantic-release created a build
+        id: check_build
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "./src/sdks/core/dist/lib/firebolt.mjs"
       # - name: Release Firebolt SDKs to NPM
       #   if: steps.check_build.outputs.files_exists == 'true' && github.event_name != 'pull_request' && (github.ref_name != 'main' || github.event_name == 'workflow_dispatch')
       #   env:
