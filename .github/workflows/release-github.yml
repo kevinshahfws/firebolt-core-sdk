@@ -12,6 +12,7 @@ on:
     branches: 
       - 'next'
       - 'proposed'
+      - feature-pr-doc
 env:
   HUSKY: 0
 jobs:
