@@ -12,6 +12,7 @@ on:
     branches: 
       - 'next'
       - 'proposed'
+      - feature-pr-doc
 env:
   HUSKY: 0
 jobs:
@@ -98,7 +99,7 @@ jobs:
           cd /tmp
           git clone https://rdkcentral:$GITHUB_TOKEN@github.com/rdkcentral/firebolt.git ./firebolt-docs
       - name: Release docs to GitHub.io
-        if: steps.check_build.outputs.files_exists == 'true'
+        if: (steps.check_build.outputs.files_exists == 'true' && github.event.pull_request.head.repo.full_name == 'rdkcentral/firebolt-apis')
         env:
           GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE_BOT_PAT }} # <-- Allows semantic-release-bot to push changes to protected branches
           npm_config_tag: ${{ env.NPM_DIST_TAG }} # <-- For main, this is `latest.` Otherwise, `next`, `next-major`, etc. See ./.releaserc for release branch config.
